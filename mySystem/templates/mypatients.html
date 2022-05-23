@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">My Patients</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">My Patients</li>
+            </ol>
+        </div>
+        {% for patient in patients %}
+        <div class="card m-4">
+            <div class="card-header">
+                Patient {{patient.pk}}
+            </div>
+            <div class="card-body">
+                    <h5 class="card-title">{{patient}}</h5>
+                    <a href="{% url 'patientECG' patient.pk %}" class="btn btn-primary">View ECG</a>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </main>
+    
+</div>
+{% endblock body %}
